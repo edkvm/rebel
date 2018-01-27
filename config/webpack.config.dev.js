@@ -88,6 +88,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      '../../theme.config$': path.join(__dirname, '../src/themes/rebel/theme.config'),
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -131,6 +132,23 @@ module.exports = {
           // smaller than specified limit in bytes as data URLs to avoid requests.
           // A missing `test` is equivalent to a match.
           {
+            test: /\.inline\.svg$/,
+            exclude: /node_modules/,
+            use: [
+              'svg-react-loader',
+              {
+                loader: 'svgo-loader',
+                options: {
+                  plugins: [
+                    { removeTitle: true },
+                    { removeViewBox: false },
+                    { removeDimensions: true },
+                  ],
+                },
+              },
+            ],
+          },
+          {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
             options: {
@@ -157,7 +175,7 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           {
-            test: /\.css$/,
+            test: /\.less$/,
             use: [
               require.resolve('style-loader'),
               {
@@ -186,6 +204,9 @@ module.exports = {
                   ],
                 },
               },
+              {
+                loader: require.resolve('less-loader'),
+              },
             ],
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
@@ -198,7 +219,7 @@ module.exports = {
             // its runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.config$/, /\.variables$/, /\.overrides$/],
             loader: require.resolve('file-loader'),
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
