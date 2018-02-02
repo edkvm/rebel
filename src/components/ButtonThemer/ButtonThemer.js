@@ -4,17 +4,17 @@ import { Helmet } from "react-helmet";
 
 
 class ButtonThemer extends React.Component {
-  
+  // TODO: Split into individual components
   render() {
     const { colors } = this.props;
     return(<Helmet>
-          <style>{`
+          <style type='text/css'>{`
             .ui.button {
               background-color: ${colors.default};
             };
 
             .ui.primary.button {
-              background-color: ${colors.primary};
+              background: ${colors.primary};
             };
 
             .ui.basic.button {

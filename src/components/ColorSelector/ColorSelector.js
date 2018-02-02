@@ -84,7 +84,7 @@ ColorSelector.defaultProps = {
 
 ColorSelector.propTypes = {
   color: PropTypes.string,
-  lable: PropTypes.string,
+  label: PropTypes.string,
   onChange: PropTypes.func
 }
 

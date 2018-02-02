@@ -14,21 +14,28 @@ import './themes/rebel/semantic.less';
 
 class App extends Component {
   state = {
-    uiButton:{ 
-      color: '#AC25AC' 
-    }
+    uiButton: { }
   }
+
+  handleColorChange = (colorName, color) => {
+    const uiButton = this.state.uiButton;
+    uiButton[colorName] = color;
+    
+    this.setState({ uiButton });
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="App">
+        <ButtonThemer colors={this.state.uiButton} />
         <MainNavigation />
-        <ButtonThemer color={this.state.uiButton.color}/>
-        <Container>
-          <Header as='h1'>First Header</Header> 
+        <Container style={{ paddingTop: '10px'}}>
+          <Header as='h1'>Buttons</Header> 
           <Grid>
             <Grid.Row>
               <Segment color='grey' style={{ width: '100%' }}>
-                <Button default>Default</Button>
+                <Button >Default</Button>
                 <Button primary>Primary</Button>
                 <Button basic>Basic</Button>
                 <Button positive>Success</Button>
@@ -37,20 +44,50 @@ class App extends Component {
             </Grid.Row>
             <Grid.Row>
               <Segment attached="bottom">   
-                <ColorSelector 
-                  color={'#AC25AC'} 
-                  onChange={ (color) => {
-                      this.setState({ uiButton: { color: color }}); 
-                    }
-                  }
-                  />
-                <ColorSelector 
-                  color={'#AC25AC'} 
-                  onChange={ (color) => {
-                      this.setState({ uiButton: { color: color }}); 
-                    }
-                  }
-                  />
+                <Grid columns={4}>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <ColorSelector 
+                        label='default'
+                        color={'#E8E8E8'} 
+                        onChange={ (color) => {
+                            this.handleColorChange('default', color);
+                          }
+                        }
+                      />
+                    </Grid.Column>
+                    <Grid.Column>
+                      <ColorSelector 
+                        label='primary'
+                        color={'#2185D0'} 
+                        onChange={ (color) => {
+                            this.handleColorChange('primary', color);
+                          }
+                        }
+                      />
+                    </Grid.Column>
+                    <Grid.Column>
+                      <ColorSelector
+                        label='positive'
+                        color={'#21BA45'} 
+                        onChange={ (color) => {
+                            this.handleColorChange('positive', color);
+                          }
+                        }
+                      />
+                    </Grid.Column>
+                    <Grid.Column>
+                      <ColorSelector
+                        label='negative'
+                        color={'#DB2828'} 
+                        onChange={ (color) => {
+                            this.handleColorChange('negative', color);
+                          }
+                        }
+                      />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
               </Segment>
             </Grid.Row>
           </Grid>
