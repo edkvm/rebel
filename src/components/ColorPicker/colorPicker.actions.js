@@ -1,1 +1,0 @@
-export const chooseColor = color => ({ type: CHOOSE_COLOR, color })
