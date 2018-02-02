@@ -11,23 +11,23 @@ class ButtonThemer extends React.Component {
           <style type='text/css'>{`
             .ui.button {
               background-color: ${colors.default};
-            };
+            }
 
             .ui.primary.button {
-              background: ${colors.primary};
-            };
+              background-color: ${colors.primary};
+            }
 
             .ui.basic.button {
               background-color: ${colors.basic};
-            };
+            }
 
             .ui.positive.button {
               background-color: ${colors.positive};
-            };
+            }
 
             .ui.negative.button {
               background-color: ${colors.negative};
-            };
+            }
           `}
           </style>
     </Helmet>
