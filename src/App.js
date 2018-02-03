@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import logo from './logo.svg';
-import { Button, Segment, Container, Grid, GridColumn, Header } from 'semantic-ui-react';
+import { Button, Segment, Container, Grid, GridColumn, Header, Popup, Icon } from 'semantic-ui-react';
 
 import { SketchPicker } from 'react-color';
 
@@ -9,7 +9,11 @@ import ColorSelector from './components/ColorSelector/ColorSelector';
 import ButtonThemer from './components/ButtonThemer/ButtonThemer';
 
 import MainNavigation from './components/MainNavigation/MainNavigation';
-import './themes/rebel/semantic.less';
+import HomepageLayout from './layout/HomepageLayout';
+
+import './styles/themes/rebel/semantic.less';
+
+
 
 
 class App extends Component {
@@ -26,74 +30,48 @@ class App extends Component {
 
   render() {
     console.log(this.state)
+
     return (
       <div className="App">
+        <div style={ { position: 'fixed', bottom: '100px', left: '10px', zIndex: '1000' } }>
+        <Popup wide trigger={<Button circular icon='edit' color='red' />} on='click'>
+          <Header as='h1'>Variables</Header>
+          <ColorSelector 
+            label='default'
+            color={'#E8E8E8'} 
+            onChange={ (color) => {
+                this.handleColorChange('default', color);
+              }
+            }
+          />
+          <ColorSelector 
+            label='primary'
+            color={'#2185D0'} 
+            onChange={ (color) => {
+                this.handleColorChange('primary', color);
+              }
+            }
+          />
+          <ColorSelector
+            label='positive'
+            color={'#21BA45'} 
+            onChange={ (color) => {
+                this.handleColorChange('positive', color);
+              }
+            }
+          />
+          <ColorSelector
+            label='negative'
+            color={'#DB2828'} 
+            onChange={ (color) => {
+                this.handleColorChange('negative', color);
+              }
+            }
+          />
+        </Popup>
+        </div>
         <ButtonThemer colors={this.state.uiButton} />
-        <MainNavigation />
-        <Container style={{ paddingTop: '10px'}}>
-          <Header as='h1'>Buttons</Header> 
-          <Grid>
-            <Grid.Row>
-              <Segment color='grey' style={{ width: '100%' }}>
-                <Button >Default</Button>
-                <Button primary>Primary</Button>
-                <Button basic>Basic</Button>
-                <Button positive>Success</Button>
-                <Button negative>Danger</Button>
-              </Segment>
-            </Grid.Row>
-            <Grid.Row>
-              <Segment attached="bottom">   
-                <Grid columns={4}>
-                  <Grid.Row>
-                    <Grid.Column>
-                      <ColorSelector 
-                        label='default'
-                        color={'#E8E8E8'} 
-                        onChange={ (color) => {
-                            this.handleColorChange('default', color);
-                          }
-                        }
-                      />
-                    </Grid.Column>
-                    <Grid.Column>
-                      <ColorSelector 
-                        label='primary'
-                        color={'#2185D0'} 
-                        onChange={ (color) => {
-                            this.handleColorChange('primary', color);
-                          }
-                        }
-                      />
-                    </Grid.Column>
-                    <Grid.Column>
-                      <ColorSelector
-                        label='positive'
-                        color={'#21BA45'} 
-                        onChange={ (color) => {
-                            this.handleColorChange('positive', color);
-                          }
-                        }
-                      />
-                    </Grid.Column>
-                    <Grid.Column>
-                      <ColorSelector
-                        label='negative'
-                        color={'#DB2828'} 
-                        onChange={ (color) => {
-                            this.handleColorChange('negative', color);
-                          }
-                        }
-                      />
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Segment>
-            </Grid.Row>
-          </Grid>
-        </Container>
-        
-        
+        <HomepageLayout/>
       </div>
     );
   }

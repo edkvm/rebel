@@ -15,6 +15,7 @@ class ButtonThemer extends React.Component {
 
             .ui.primary.button {
               background-color: ${colors.primary};
+              color: #111111;
             }
 
             .ui.basic.button {

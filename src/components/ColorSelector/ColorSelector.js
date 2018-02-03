@@ -42,7 +42,7 @@ class ColorSelector extends React.Component {
         },
         popover: {
           position: 'absolute',
-          zIndex: '2',
+          zIndex: '4',
         },
         cover: {
           position: 'fixed',
@@ -59,7 +59,7 @@ class ColorSelector extends React.Component {
       <div>
         <Input 
           label={ label }
-          size='tiny'
+          size='small'
           value={ `${this.state.color.toUpperCase()}` } 
           action={<div style={ styles.colorHolder } onClick={ this.handleClick } /> }
         />
