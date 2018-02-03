@@ -56,7 +56,7 @@ class ColorSelector extends React.Component {
 
     const label = this.props.label;
     return (
-      <div>
+      <div className='color-selector' >
         <Input 
           label={ label }
           size='small'
