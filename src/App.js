@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Button,  Header, Popup, Icon , Grid } from 'semantic-ui-react';
+import { Button,  Header, Popup, Icon , Container, Grid } from 'semantic-ui-react';
 
 
 import ColorSelector from './containers/editor/ColorSelector/ColorSelector';
@@ -36,44 +36,52 @@ class App extends Component {
           <Header as='h1'>Edit</Header>
           <Grid>
             <Grid.Row>
-              <ColorSelector 
-              label='default'
-              color={'#E8E8E8'} 
-              onChange={ (color) => {
-                  this.handleColorChange('default', color);
-                }
-              }
-            />
+              <Grid.Column>
+                <ColorSelector 
+                  label='default'
+                  color={'#E8E8E8'} 
+                  onChange={ (color) => {
+                      this.handleColorChange('default', color);
+                    }
+                  }
+                />
+              </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-              <ColorSelector 
-              label='primary'
-              color={'#2185D0'} 
-              onChange={ (color) => {
-                  this.handleColorChange('primary', color);
-                }
-              }
-            />
+              <Grid.Column>
+                <ColorSelector 
+                  label='primary'
+                  color={'#2185D0'} 
+                  onChange={ (color) => {
+                      this.handleColorChange('primary', color);
+                    }
+                  }
+                />
+              </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-              <ColorSelector
-              label='positive'
-              color={'#21BA45'} 
-              onChange={ (color) => {
-                  this.handleColorChange('positive', color);
-                }
-              }
-            />
+              <Grid.Column>
+                <ColorSelector
+                  label='positive'
+                  color={'#21BA45'} 
+                  onChange={ (color) => {
+                      this.handleColorChange('positive', color);
+                    }
+                  }
+                />
+                </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-              <ColorSelector
-              label='negative'
-              color={'#DB2828'} 
-              onChange={ (color) => {
-                  this.handleColorChange('negative', color);
-                }
-              }
-            />
+              <Grid.Column>
+                <ColorSelector
+                  label='negative'
+                  color={'#DB2828'} 
+                  onChange={ (color) => {
+                      this.handleColorChange('negative', color);
+                    }
+                  }
+                />
+              </Grid.Column>
             </Grid.Row>
           </Grid>    
           

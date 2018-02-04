@@ -9,14 +9,6 @@ class ButtonThemer extends React.Component {
     const { colors } = this.props;
     return(<Helmet>
           <style type='text/css'>{`
-            .color-selector input[type="text"] {
-              width: 90px;
-            }
-
-            .color-selector .input {
-              width: 200px;
-            }
-
             .ui.button {
               background-color: ${colors.default};
             }

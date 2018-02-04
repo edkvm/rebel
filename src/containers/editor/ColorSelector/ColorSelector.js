@@ -6,6 +6,7 @@ import { Input, Label } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 
+import './colorSelector.less';
 
 class ColorSelector extends React.Component {
   constructor(props) {
