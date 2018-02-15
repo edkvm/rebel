@@ -27,8 +27,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
-
     return (
       <div className="App">
         <div style={ { position: 'fixed', bottom: '10px', left: '10px', zIndex: '1000' } }>
