@@ -15,7 +15,10 @@ class ButtonEditPanel extends React.Component {
   }
   updateTheme(colors) {
     let modifyVarsCmd = {
-      '@backgroundColor': colors.default
+      '@backgroundColor': colors.default,
+      '@primaryColor': colors.primary,
+      '@positiveColor': colors.positive,
+      '@negativeColor': colors.negative
     };
     window.less.modifyVars(modifyVarsCmd);
   }
