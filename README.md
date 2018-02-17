@@ -7,3 +7,6 @@ less.modifyVars({
   '@buttonFace': '#5B83AD',
   '@buttonText': '#D9EEF2'
 });
+
+Chnages need to be made to less-browser/index.js line 130 
+loadStyleSheets,
