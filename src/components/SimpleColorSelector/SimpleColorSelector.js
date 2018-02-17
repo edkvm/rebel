@@ -38,10 +38,10 @@ class SimpleColorSelector extends React.Component {
     return (
         <div>
             <Input 
-            label={ label }
-            size='small'
-            value={ `${this.state.color.toUpperCase()}` } 
-            onChange={ this.handleChange } 
+              label={ label }
+              size='small'
+              value={ `${this.state.color.toUpperCase()}` } 
+              onChange={ this.handleChange } 
             /> 
         </div>
     )
