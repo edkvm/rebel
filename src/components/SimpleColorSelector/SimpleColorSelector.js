@@ -15,7 +15,6 @@ class SimpleColorSelector extends React.Component {
       displayDialog: false,
       color: this.props.color
     };
-    
   }
   
   handleClick = () => {
@@ -28,7 +27,10 @@ class SimpleColorSelector extends React.Component {
 
   handleChange = (param, data) => {
     this.setState({ color: data.value })
-    this.props.onValueChange(data.value);
+    
+    if(data.value.length == 7) {
+      this.props.onValueChange(data.value);
+    }
   }
 
   render() {

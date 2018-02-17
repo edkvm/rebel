@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet";
 class LessLoader extends React.Component {
   // TODO: Split into individual components
   render() {
-    const { colors } = this.props;
     let baseUrl = "/static/style/less/_factory/semantic-ui/definitions";
     let elements = [
         {
@@ -36,14 +35,6 @@ class LessLoader extends React.Component {
         </Helmet>
     )
   }
-}
-
-LessLoader.defaultProps = {
-  colors: {}
-}
-
-LessLoader.propTypes = {
-  colors: PropTypes.object
 }
 
 export default LessLoader;
