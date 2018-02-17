@@ -12,15 +12,26 @@ class LessLoader extends React.Component {
         {
             type: 'elements',
             name: 'button'
+        },
+        {
+            type: 'elements',
+            name: 'segment'
+        },
+        {
+            type: 'collections',
+            name: 'grid'
+        },
+        {
+            type: 'collections',
+            name: 'menu'
         }
     ];
 
     return(
         <Helmet>
-            {elements.map((el, _) => (
-            <link rel="stylesheet/less" type="text/css" href={`${baseUrl}/${el.type}/${el.name}.less`} />
+            {elements.map((el, idx) => (
+            <link rel="stylesheet/less" type="text/css" href={`${baseUrl}/${el.type}/${el.name}.less`} key={idx}/>
             ))}
-            
             <script src="/static/js/less.js" type="text/javascript"></script>
         </Helmet>
     )

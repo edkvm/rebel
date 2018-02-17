@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 
 import { Button,  Header, Popup, Icon , Container, Grid } from 'semantic-ui-react';
 
-
-import ColorSelector from './containers/editor/ColorSelector/ColorSelector';
-import ButtonThemer from './containers/editor/ButtonThemer/ButtonThemer';
-import LessLoader from './containers/editor/LessLoader/LessLoader';
 import HomepageLayout from './containers/stubapp/layout/HomepageLayout';
 
+import ColorSelector from './containers/editor/ColorSelector/ColorSelector';
+import SimpleColorSelector from './containers/editor/SimpleColorSelector/SimpleColorSelector';
+import ButtonThemer from './containers/editor/ButtonThemer/ButtonThemer';
+import LessLoader from './containers/editor/LessLoader/LessLoader';
+
 //import './styles/themes/rebel/semantic.less';
-
-
-
-
 
 class App extends Component {
   state = {
@@ -35,10 +32,10 @@ class App extends Component {
           <Grid>
             <Grid.Row>
               <Grid.Column>
-                <ColorSelector 
+                <SimpleColorSelector 
                   label='default'
                   color={'#E8E8E8'} 
-                  onChange={ (color) => {
+                  onValueChange={ (color) => {
                       this.handleColorChange('default', color);
                     }
                   }
@@ -47,10 +44,10 @@ class App extends Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <ColorSelector 
+                <SimpleColorSelector 
                   label='primary'
                   color={'#2185D0'} 
-                  onChange={ (color) => {
+                  onValueChange={ (color) => {
                       this.handleColorChange('primary', color);
                     }
                   }
@@ -59,10 +56,10 @@ class App extends Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <ColorSelector
+                <SimpleColorSelector
                   label='positive'
                   color={'#21BA45'} 
-                  onChange={ (color) => {
+                  onValueChange={ (color) => {
                       this.handleColorChange('positive', color);
                     }
                   }
@@ -71,10 +68,10 @@ class App extends Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <ColorSelector
+                <SimpleColorSelector
                   label='negative'
                   color={'#DB2828'} 
-                  onChange={ (color) => {
+                  onValueChange={ (color) => {
                       this.handleColorChange('negative', color);
                     }
                   }
