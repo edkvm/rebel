@@ -5,10 +5,10 @@ import { Button,  Header, Popup, Icon , Container, Grid } from 'semantic-ui-reac
 
 import ColorSelector from './containers/editor/ColorSelector/ColorSelector';
 import ButtonThemer from './containers/editor/ButtonThemer/ButtonThemer';
-
+import LessLoader from './containers/editor/LessLoader/LessLoader';
 import HomepageLayout from './containers/stubapp/layout/HomepageLayout';
 
-import './styles/themes/rebel/semantic.less';
+//import './styles/themes/rebel/semantic.less';
 
 
 
@@ -88,6 +88,7 @@ class App extends Component {
           
         </Popup>
         </div>
+        <LessLoader colors={this.state.uiButton} />
         <ButtonThemer colors={this.state.uiButton} />
         <HomepageLayout/>
       </div>
