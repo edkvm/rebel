@@ -5,10 +5,14 @@ import { Button,  Header, Popup, Icon , Container, Grid } from 'semantic-ui-reac
 import SimpleColorSelector from '../../../components/SimpleColorSelector/SimpleColorSelector';
 
 class ButtonEditPanel extends React.Component {
-  state = {
-    uiButton: { }
-  }
   
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      themeColors: props.themeColors
+    };
+  }
   updateTheme(colors) {
     let modifyVarsCmd = {
       '@backgroundColor': colors.default
@@ -17,65 +21,34 @@ class ButtonEditPanel extends React.Component {
   }
 
   handleColorChange = (colorName, color) => {
-    const uiButton = this.state.uiButton;
-    uiButton[colorName] = color;
-    this.setState({ uiButton });
-    this.updateTheme(uiButton);
+    const themeColors = this.state.themeColors;
+    themeColors[colorName] = color;
+    this.setState({ themeColors });
+    this.updateTheme(themeColors);
   }
 
   render() {
+    const { themeColors } = this.state;
     return(
       <div>  
         <Header as='h1'>Button Edit</Header>
         <Grid>
-          <Grid.Row>
-            <Grid.Column>
-              <SimpleColorSelector 
-                label='default'
-                color={'#E8E8E8'} 
-                onValueChange={ (color) => {
-                    this.handleColorChange('default', color);
-                  }
-                }
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <SimpleColorSelector 
-                label='primary'
-                color={'#2185D0'} 
-                onValueChange={ (color) => {
-                    this.handleColorChange('primary', color);
-                  }
-                }
-              />
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <SimpleColorSelector
-                label='positive'
-                color={'#21BA45'} 
-                onValueChange={ (color) => {
-                    this.handleColorChange('positive', color);
-                  }
-                }
-              />
-              </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <SimpleColorSelector
-                label='negative'
-                color={'#DB2828'} 
-                onValueChange={ (color) => {
-                    this.handleColorChange('negative', color);
-                  }
-                }
-              />
-            </Grid.Column>
-          </Grid.Row>
+          { 
+            Object.keys(themeColors).map((key) => (
+              <Grid.Row key={key}>
+                <Grid.Column>
+                  <SimpleColorSelector 
+                    label={key}
+                    color={themeColors[key]} 
+                    onValueChange={ (color) => {
+                        this.handleColorChange(key, color);
+                      }
+                    }
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            ))
+          }
         </Grid>    
       </div>
     )
@@ -83,11 +56,16 @@ class ButtonEditPanel extends React.Component {
 }
 
 ButtonEditPanel.defaultProps = {
-  colors: {}
+  themeColors: {
+    'default': '#E8E8E8',
+    'primary': '#2185D0',
+    'positive': '#21BA45',
+    'negative': '#DB2828'
+  }
 }
 
 ButtonEditPanel.propTypes = {
-  colors: PropTypes.object
+  themeColors: PropTypes.object
 }
 
 export default ButtonEditPanel;
